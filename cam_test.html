@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>web cam connection test</title>
+    </head>
+    <body>
+        <video id="video" width="80%" height="80%" autoplay></video>
+        <script>
+            if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+                    var video = document.getElementById('video');
+                    video.srcObject = stream;
+                    video.play();
+                });
+            }
+            var video = document.getElementById('video');
+        </script>
+    </body>
+</html>
