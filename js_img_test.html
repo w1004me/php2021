@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <meta charset="utf-8"></meta>
+        <title>함수 학습</title>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
+        <script>
+            var count = 0, count1=0.0, count2=0.0, count3=0.0;
+            var score = 0.0, temp_atob=0.0, temp_btoc=0.0;
+            max_score = 100;
+            game_count = 0, sum_score = 0;
+            var timerId = null;
+            function Rand(min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min)) + min;
+            }
+            function Start() {
+                count1 = Auto_change_img(Rand(0, 10),"num1");
+                count2 = Auto_change_img(Rand(0, 10),"num2");
+                count3 = Auto_change_img(Rand(0, 10),"num3");
+                timerId = setTimeout(Start, 100);
+            }
+            function Stop() {
+                if(count1 == count2 && count2 == count3)
+                {
+                    score = 100;
+                }
+                else if(count1 == count2 || count2 == count3 || count1 == count3)
+                {
+                    score = 60;
+                }
+                else{
+                    score = 0;
+                }
+                game_count++;
+                sum_score += score;
+                $('#score').text('점수 : '+score+', 횟수 : '+game_count+", 누적 점수: "+sum_score);
+                
+                clearTimeout(timerId);
+            }
+            function Auto_change_img(count,id_value){                
+                var myNum = document.getElementById(id_value);
+                str = "/img/"+count+".jpg";
+                myNum.src = str;
+                return count;
+            }
+        </script>
+    </head>
+    <body>
+        <input type="button" value="start" onclick="Start()">
+        <input type="button" value="stop" onclick="Stop()">
+    </body>
+    <div>
+        <img src="/img/0.jpg" width="300px" height="300px" id="num1">
+        <img src="/img/0.jpg" width="300px" height="300px" id="num2">
+        <img src="/img/0.jpg" width="300px" height="300px" id="num3">
+        <p id="score">점수 : 0, 횟수 : 0, 누적 점수: 0</p>
+    </div>
+</html>
