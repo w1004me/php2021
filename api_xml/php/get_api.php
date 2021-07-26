@@ -1,5 +1,5 @@
 <?php
-    $no = $_GET["val"];
+    $no = $_GET["data"];
     $ch = curl_init();
     $AirportCode = 'getAirportCodeList';/*공항 코드 정보*/
     $en_key = "pMgRnW4wnjPU0mz%2Fd7h8m6PficxgUKrcm3dZ5TGXL85LnsL%2Fe8jZyH4Wj3xXbq%2FUmi0PEauSMJCi9UnFfh0NGg%3D%3D";
